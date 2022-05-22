@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/simple-wysiwyg/static/css/main.3a89374e.css",
+    "main.js": "/simple-wysiwyg/static/js/main.fb785ca2.js",
+    "static/media/Nunito.woff2": "/simple-wysiwyg/static/media/Nunito.91b276d00e7edd0a0fd6.woff2",
+    "service-worker.js": "/simple-wysiwyg/service-worker.js",
+    "index.html": "/simple-wysiwyg/index.html",
+    "main.3a89374e.css.map": "/simple-wysiwyg/static/css/main.3a89374e.css.map",
+    "main.fb785ca2.js.map": "/simple-wysiwyg/static/js/main.fb785ca2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3a89374e.css",
+    "static/js/main.fb785ca2.js"
+  ]
+}
