@@ -1,0 +1,111 @@
+:root {
+  --light: #f8fafb;
+  --white: #fff;
+  --primary: #6777ef;
+  --dark: #34495e;
+  --muted: #78828a;
+  --box-shadow: 0 0 8px rgba(103, 119, 239, 0.1);
+  --border: 1px solid rgba(103, 119, 239, 0.1);
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-display: swap;
+  src: url('../assets/fonts/Nunito.woff2');
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  transition: 0.3s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background: var(--light);
+  font-family: 'Nunito';
+}
+
+#root {
+  width: 100%;
+  max-width: 1600px !important;
+  margin: auto;
+}
+
+.text-editor {
+  margin: 32px;
+  background: var(--white);
+  border-radius: 7px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.editor-header,
+.editor-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.editor-header::-webkit-scrollbar,
+.editor-content::-webkit-scrollbar {
+  display: none;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  padding: 8px 16px;
+  overflow-x: auto;
+}
+
+.btn-editor {
+  width: 28px;
+  height: 28px;
+  display: block;
+  margin: 0 4px;
+}
+
+.btn-editor svg {
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  fill: var(--muted);
+  background: var(--white);
+  border: var(--border);
+  border-radius: 4px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.btn-editor.active svg,
+.btn-editor svg:hover {
+  fill: var(--light);
+  background: var(--primary);
+}
+
+.editor-content {
+  width: 100%;
+  height: calc(100vh - 108px);
+  background: var(--white);
+  padding: 16px 24px;
+  border-top: var(--border);
+  overflow: auto;
+}
+
+.editor-content #text,
+.editor-content div {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 6.4px;
+  color: var(--dark);
+}

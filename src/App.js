@@ -1,25 +1,85 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback } from 'react'
+import {
+  toggleAllButtonEditor,
+  toggleExecButtonEditor,
+  useKeyPress,
+} from './utils'
 
-function App() {
+const ButtonEditor = ({ command, children }) => {
+  const handleBtnEditorClick = useCallback((event, command) => {
+    document.querySelector('.editor-content').focus()
+    toggleExecButtonEditor(event, command)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      id={command}
+      onClick={(event) => handleBtnEditorClick(event, command)}
+      className='btn-editor'
+    >
+      {children}
     </div>
-  );
+  )
 }
 
-export default App;
+const App = React.memo(() => {
+  const handleSelectionText = useCallback(() => {
+    toggleAllButtonEditor()
+  }, [])
+
+  useKeyPress()
+
+  return (
+    <div className='text-editor'>
+      <div className='editor-header'>
+        <ButtonEditor command='bold'>
+          <svg viewBox='2.316 1.316 24 24'>
+            <path d='M 19.127 13.036 C 19.732 12.258 20.062 11.302 20.066 10.316 C 20.066 7.835 18.047 5.816 15.566 5.816 L 8.066 5.816 L 8.066 20.816 L 16.066 20.816 C 18.547 20.816 20.566 18.797 20.566 16.316 C 20.563 15.07 20.042 13.882 19.127 13.036 L 19.127 13.036 Z M 15.566 8.816 C 16.393 8.816 17.066 9.489 17.066 10.316 C 17.066 11.143 16.393 11.816 15.566 11.816 L 11.066 11.816 L 11.066 8.816 L 15.566 8.816 Z M 16.066 17.816 L 11.066 17.816 L 11.066 14.816 L 16.066 14.816 C 16.893 14.816 17.566 15.489 17.566 16.316 C 17.566 17.143 16.893 17.816 16.066 17.816 Z' />
+          </svg>
+        </ButtonEditor>
+        <ButtonEditor command='italic'>
+          <svg viewBox='20.497 9.409 24 24'>
+            <path d='M 39.497 16.409 L 39.497 13.409 L 29.497 13.409 L 29.497 16.409 L 32.365 16.409 L 29.509 26.409 L 25.497 26.409 L 25.497 29.409 L 35.497 29.409 L 35.497 26.409 L 32.629 26.409 L 35.485 16.409 L 39.497 16.409 Z' />
+          </svg>
+        </ButtonEditor>
+        <ButtonEditor command='underline'>
+          <svg viewBox='25.084 7.847 24 24'>
+            <path d='M 30.084 25.847 L 44.084 25.847 L 44.084 27.847 L 30.084 27.847 L 30.084 25.847 Z M 31.084 11.847 L 31.084 17.847 C 31.084 21.156 33.775 23.847 37.084 23.847 C 40.393 23.847 43.084 21.156 43.084 17.847 L 43.084 11.847 L 41.084 11.847 L 41.084 17.847 C 41.084 20.053 39.29 21.847 37.084 21.847 C 34.878 21.847 33.084 20.053 33.084 17.847 L 33.084 11.847 L 31.084 11.847 Z' />
+          </svg>
+        </ButtonEditor>
+        <ButtonEditor command='strikeThrough'>
+          <svg viewBox='22.818 7.824 24 24'>
+            <path d='M 42.818 18.824 L 34.818 18.824 C 30.818 18.824 30.818 17.008 30.818 16.324 C 30.818 15.706 30.818 13.824 34.818 13.824 C 37.618 13.824 37.808 15.502 37.818 15.838 L 38.818 15.824 L 39.818 15.824 C 39.818 14.44 38.773 11.824 34.818 11.824 C 29.402 11.824 28.818 14.971 28.818 16.324 C 28.818 17.052 28.966 17.991 29.554 18.824 L 26.818 18.824 L 26.818 20.824 L 42.818 20.824 L 42.818 18.824 Z M 34.818 25.824 C 31.025 25.824 30.828 24.009 30.818 23.824 L 28.818 23.824 C 28.818 23.864 28.887 27.824 34.818 27.824 C 40.039 27.824 40.818 25.005 40.818 23.324 C 40.818 23.178 40.809 23.007 40.79 22.824 L 38.784 22.824 C 38.816 23.024 38.818 23.2 38.818 23.324 C 38.818 24.008 38.818 25.824 34.818 25.824 Z' />
+          </svg>
+        </ButtonEditor>
+        <ButtonEditor command='justifyLeft'>
+          <svg viewBox='25.095 4.005 24 24'>
+            <path d='M 29.095 23.005 L 45.095 23.005 L 45.095 25.005 L 29.095 25.005 L 29.095 23.005 Z M 29.095 19.005 L 40.095 19.005 L 40.095 21.005 L 29.095 21.005 L 29.095 19.005 Z M 29.095 15.005 L 45.095 15.005 L 45.095 17.005 L 29.095 17.005 L 29.095 15.005 Z M 29.095 7.005 L 45.095 7.005 L 45.095 9.005 L 29.095 9.005 L 29.095 7.005 Z M 29.095 11.005 L 40.095 11.005 L 40.095 13.005 L 29.095 13.005 L 29.095 11.005 Z' />
+          </svg>
+        </ButtonEditor>
+        <ButtonEditor command='justifyCenter'>
+          <svg viewBox='25.651 5.858 24 24'>
+            <path d='M 29.651 24.858 L 45.651 24.858 L 45.651 26.858 L 29.651 26.858 L 29.651 24.858 Z M 32.651 20.858 L 42.651 20.858 L 42.651 22.858 L 32.651 22.858 L 32.651 20.858 Z M 29.651 16.858 L 45.651 16.858 L 45.651 18.858 L 29.651 18.858 L 29.651 16.858 Z M 29.651 8.858 L 45.651 8.858 L 45.651 10.858 L 29.651 10.858 L 29.651 8.858 Z M 32.651 12.858 L 42.651 12.858 L 42.651 14.858 L 32.651 14.858 L 32.651 12.858 Z' />
+          </svg>
+        </ButtonEditor>
+        <ButtonEditor command='justifyRight'>
+          <svg viewBox='32.054 7.182 24 24'>
+            <path d='M 36.054 26.182 L 52.054 26.182 L 52.054 28.182 L 36.054 28.182 L 36.054 26.182 Z M 41.054 22.182 L 52.054 22.182 L 52.054 24.182 L 41.054 24.182 L 41.054 22.182 Z M 36.054 18.182 L 52.054 18.182 L 52.054 20.182 L 36.054 20.182 L 36.054 18.182 Z M 36.054 10.182 L 52.054 10.182 L 52.054 12.182 L 36.054 12.182 L 36.054 10.182 Z M 41.054 14.182 L 52.054 14.182 L 52.054 16.182 L 41.054 16.182 L 41.054 14.182 Z' />
+          </svg>
+        </ButtonEditor>
+        <ButtonEditor command='justifyFull'>
+          <svg viewBox='23.075 7.047 24 24'>
+            <path d='M 27.075 14.047 L 43.075 14.047 L 43.075 16.047 L 27.075 16.047 L 27.075 14.047 Z M 27.075 10.047 L 43.075 10.047 L 43.075 12.047 L 27.075 12.047 L 27.075 10.047 Z M 27.075 18.047 L 43.075 18.047 L 43.075 20.047 L 27.075 20.047 L 27.075 18.047 Z M 27.075 22.047 L 43.075 22.047 L 43.075 24.047 L 27.075 24.047 L 27.075 22.047 Z M 29.075 26.047 L 41.075 26.047 L 41.075 28.047 L 29.075 28.047 L 29.075 26.047 Z' />
+          </svg>
+        </ButtonEditor>
+      </div>
+      <div
+        className='editor-content'
+        contentEditable={true}
+        onSelect={handleSelectionText}
+      ></div>
+    </div>
+  )
+})
+
+export default App
