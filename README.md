@@ -4,6 +4,8 @@
 
 Live simple word processing application. What You See Is What You Get (WYSIWYG). In addition, this application can work offline (PWA).
 
+[Demo App](https://herdianurdin.github.io/simple-wysiwyg/)
+
 ### Built With
 
 [<img src='react-js.svg' width="100" />](https://reactjs.org/)
