@@ -1,6 +1,6 @@
 ## About Project
 
-![Screenshot](screenshot.webp)
+![Screenshot](ss.webp)
 
 Live simple word processing application. What You See Is What You Get (WYSIWYG). In addition, this application can work offline (PWA).
 
